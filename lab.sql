@@ -7,12 +7,10 @@ WHERE last_name IN (SELECT last_name
 					HAVING COUNT(last_name) = 1);
 
 -- 2. Which last names appear more than once?
-SELECT first_name,last_name
+SELECT last_name
 FROM sakila.actor
-WHERE last_name IN (SELECT last_name
-					FROM sakila.actor
-					GROUP BY last_name
-					HAVING COUNT(last_name) > 1);
+GROUP BY last_name
+HAVING COUNT(last_name) > 1;
                     
 -- 3. Using the rental table, find out how many rentals were processed by each employee.
 SELECT COUNT(rental_id)
